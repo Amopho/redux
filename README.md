@@ -2,7 +2,7 @@
 
 Small app to practice redux state management with Mosh https://codewithmosh.com/courses .
 
-![Preview] (./public/images/redux.png)
+![Preview](./public/images/redux.png)
 
 ### Console work
 
