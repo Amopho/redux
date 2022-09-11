@@ -10,9 +10,58 @@ Small app to practice redux state management with Mosh https://codewithmosh.com/
 
 git clone https://github.com/amopho/redux.git
 
-#### npm install
+#### npm i
+To install packages from package json
 
 #### npm start
+
+### Getting started with webpack
+a js bundle that would throw js code into app json in dist directory.
+
+Configure webpack.config.json
+```js
+const path = require("path");
+
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "app.js",
+    path: path.resolve(__dirname, "dist")
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    port: 9000
+  },
+  mode: "development"
+};
+```
+Package JSON prerequisetes:
+
+```json
+{
+  "name": "redux-starter",
+  "version": "1.0.0",
+  "description": "Redux Starter Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js"
+  },
+  "keywords": [],
+  "author": "Mosh Hamedani",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "4.41.6",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.10.3"
+  }
+}
+```
+
+### Getting started with webpack
+Structure of working directory
+dist-> index.html
+src-> index.js
+root-> package.json, webpack.config.js
 
 # Getting Started with Create React App
 
@@ -25,15 +74,6 @@ what makes React so special:
 - State
 
 # files in React
-
-## manifest.json
-
-The web app manifest provides information about an application (such as name, author, icon, and description) in a JSON text file
-
-## reportwebvitals
-
-Tool for measuring the real life performance of your app(very new to React)
-more on that [web-vitals](https://www.npmjs.com/package/web-vitals)
 
 ## To start React Project with sass styling
 
