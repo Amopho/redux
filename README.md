@@ -1,70 +1,179 @@
+# redux :camera:
+
+Small app to practice redux state management with Mosh https://codewithmosh.com/courses .
+
+![Preview] (./public/images/redux.png)
+
+### Console work
+
+#### clone repository
+
+git clone https://github.com/amopho/redux.git
+
+#### npm install
+
+#### npm start
+
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ReactJs
 
-## Available Scripts
+A JavaScript library to build web apps
+what makes React so special:
 
-In the project directory, you can run:
+- Components
+- State
 
-### `npm start`
+# files in React
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## manifest.json
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The web app manifest provides information about an application (such as name, author, icon, and description) in a JSON text file
 
-### `npm test`
+## reportwebvitals
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Tool for measuring the real life performance of your app(very new to React)
+more on that [web-vitals](https://www.npmjs.com/package/web-vitals)
 
-### `npm run build`
+## To start React Project with sass styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install and clear the created directory from any files and code one doesn't need.
+For example:
+- in index
+- in app
+- in public
+- in src
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+ $ npx create-react-app <app-name>
+ $ cd <app-name>
+ $ npm i node-sass
+ $ npm start
+```
+Default structure for saas:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- main.
+- css.
 
-### `npm run eject`
+## Deploy React apps in GH pages
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# step 1
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Installing gh-pages package
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+$ npm install gh-pages
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# step 2
 
-## Learn More
+Adding homepage into **package.json**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+"homepage": "http://<your-gh-username>.github.io/<your-repo-name>"
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
+# step 3
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Adding some more scripts into **package.json**
 
-### Analyzing the Bundle Size
+```
+"scripts": {
+//...
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build",
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# step 4
 
-### Making a Progressive Web App
+Lastly run build script to generate build dir
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+$ npm rum build
+$ npm run deploy
+```
 
-### Advanced Configuration
+## To install fontawesome icons packages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+ $ npm i --save @fortawesome/fontawesome-svg-core
+ $ npm install --save @fortawesome/free-solid-svg-icons
+ $ npm install --save @fortawesome/react-fontawesome
+ $ npm install --save @fortawesome/free-brands-svg-icons
+ $ npm install --save @fortawesome/free-regular-svg-icons
+```
 
-### Deployment
+## To install react icons package
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+$ npm install react-icons --save
+```
 
-### `npm run build` fails to minify
+### To use fontawesome icons via Individual Use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Import icons into each component.
+
+```
+ $ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+ $ import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+ $ const element = <FontAwesomeIcon icon={faCoffee} />
+ $ ReactDOM.render(element, document.body)
+```
+
+## Installing Router to handle links
+
+```
+ $ npm install react-router-dom
+```
+
+## Axios to fetch
+
+```
+npm i axios
+```
+
+## Installing Bootstrap to handle predefined styles
+
+```
+ $ npm install react-bootstrap bootstrap@5.0.1
+```
+
+## Scss style
+
+```
+$ npm install normalize-scss
+```
+
+## To play with react emojis
+
+```
+npm i emoji-picker-react
+```
+
+Usage:
+
+```js
+import React, { useState } from 'react';
+import Picker from 'emoji-picker-react';
+
+const App = () => {
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+
+  const onEmojiClick = (event, emojiObject) => {
+    setChosenEmoji(emojiObject);
+  };
+
+  return (
+    <div>
+      {chosenEmoji ? (
+        <span>You chose: {chosenEmoji.emoji}</span>
+      ) : (
+        <span>No emoji Chosen</span>
+      )}
+      <Picker onEmojiClick={onEmojiClick} />
+    </div>
+  );
+};
+```
