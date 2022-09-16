@@ -237,4 +237,34 @@ function sayHello() {
 let fn sayHello;
 fn();
 sayHello();
+// not calling the function just passing it as a references
+//function greet(fnMessage) {
+//console.log(fnMessage());
+//greet(sayHello)
+//}
+//returning a function instead of a string. Higher order funtion will take another function as a argument or returns it, or both.
+
+function sayHello() {
+  return function() {
+    return "Hello World";
+  }
+}
+// examples of higher order funtions are well known, like map()
+let numbers = [1,2,3];
+numbers.map(number => number *2);
+// setTimeout as another example because it takes a function as an argment as well
+
+// nonfunctional approach make funtional way
+let output = "    Javascript    ";
+let output = "<div>" + input.trim() + "</div>;
+
+// things we need to do are writing a two small nd reusable functionss:
+// trim
+// and wrap into div
+// i use const as i wouldn't like to reasign it laters
+const trim = str => str.trim();s
+//render the string dinamically with backtick by $ sign
+const wrapInDiv = str =>  `<div>${}</div>`
+
+
 ```
