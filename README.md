@@ -217,3 +217,24 @@ const App = () => {
   );
 };
 ```
+
+## Notes
+
+### Functional programming
+is cutting a bigger problem into a bunch of smaller and reusable funtions which take an input and troe a result. The code written by this way is 
+- more concise,
+- easy to debug and tests,
+- scalabale.
+Javascript is not a pure functional programming language. It is a multi paradigm language.
+
+If we don't want to call a function just pass a reference to it. Funtions are first type citizens, we can treat them like normal variables. By calling a funtion we sayHello() we will get an result- string. But we cna pass a function as an argument to another function.
+
+```javascript
+function sayHello() {
+  return "Hello World!";
+}
+
+let fn sayHello;
+fn();
+sayHello();
+```
