@@ -254,7 +254,7 @@ let numbers = [1,2,3];
 numbers.map(number => number *2);
 // setTimeout as another example because it takes a function as an argment as well
 
-// nonfunctional approach make funtional way
+// nonfunctional approach makd funtional way
 let output = "    Javascript    ";
 let output = "<div>" + input.trim() + "</div>;
 
@@ -262,9 +262,22 @@ let output = "<div>" + input.trim() + "</div>;
 // trim
 // and wrap into div
 // i use const as i wouldn't like to reasign it laters
-const trim = str => str.trim();s
-//render the string dinamically with backtick by $ sign
-const wrapInDiv = str =>  `<div>${}</div>`
+const trim = str => str.trim();
+//render the string dinamically with backtick with $ sign as a template
+const wrapInDiv = str =>  `<div>${str}</div>`;
+// we may add another function to lowercase the result
+const toLowerCase = str => str.toLowerCase();
+// now we use Function Composition in functional programming, but it will result in a plenty of paranthesis we need to close
+const result = wrapInDiv(toLowerCase(trim(input)));
+// Lodash - JS library to simplify the code which has a lot of funtions for functional programming
+import {compose, pipe} from "lodash/fp";
 
+```
 
+#### 
+
+Lodash - JS library to simplify the code which has a lot of funtions for functional programming
+
+```
+npm i lodash
 ```
