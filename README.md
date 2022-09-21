@@ -281,3 +281,25 @@ Lodash - JS library to simplify the code which has a lot of funtions for functio
 ```
 npm i lodash
 ```
+Into index.js write
+
+ ```javascript
+import {compose, pipe} from "lodash/fp";
+
+// fp stays for Functional Programming
+```
+
+Currying function named after Huskel Curry
+we remove unnecessary duplications like in the example where the function does almost the same, except it uses different element. Let's parametrise it.
+ ```javascript
+/* const wrapInDiv = str =>  `<div>${str}</div>`;
+const wrapInSpan = str =>  `<span>${str}</span>`; */
+const wrap = (type, str) =>  `<${type}>${str}</$type>`;
+```
+
+Pipeline produces a string, and should give a function. This is because one of the functions in the pipeline has two parametres instead of one. We can obtain one parameter function from that one with two parametres by currying:
+```javascript
+funtion add(a) {
+  
+}
+```
