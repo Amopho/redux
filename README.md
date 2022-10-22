@@ -288,7 +288,7 @@ import {compose, pipe} from "lodash/fp";
 
 // fp stays for Functional Programming
 ```
-
+### 2.7. Currying
 Currying function named after Huskel Curry
 we remove unnecessary duplications like in the example where the function does almost the same, except it uses different element. Let's parametrise it.
  ```javascript
