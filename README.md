@@ -284,16 +284,19 @@ npm i lodash
 Into index.js write
 
  ```javascript
-import {compose, pipe} from "lodash/fp";
-
 // fp stays for Functional Programming
+import {compose, pipe} from "lodash/fp"
+
 ```
+
 ### 2.7. Currying
 Currying function named after Huskel Curry
 we remove unnecessary duplications like in the example where the function does almost the same, except it uses different element. Let's parametrise it.
+
  ```javascript
 /* const wrapInDiv = str =>  `<div>${str}</div>`;
 const wrapInSpan = str =>  `<span>${str}</span>`; */
+
 const wrap = (type, str) =>  `<${type}>${str}</$type>`;
 ```
 
