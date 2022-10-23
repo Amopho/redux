@@ -282,9 +282,10 @@ Lodash - JS library to simplify the code which has a lot of funtions for functio
 npm i lodash
 ```
 Into index.js write
+FP stays for Functional Programming
+
 
  ```javascript
-// fp stays for Functional Programming
 import {compose, pipe} from "lodash/fp"
 
 ```
