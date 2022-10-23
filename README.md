@@ -63,9 +63,9 @@ dist-> index.html
 src-> index.js
 root-> package.json, webpack.config.js
 
-# Getting Started with Create React App
+### Getting Started with Create React App
 
-## ReactJs
+#### ReactJs
 
 A JavaScript library to build web apps
 what makes React so special:
@@ -73,9 +73,9 @@ what makes React so special:
 - Components
 - State
 
-# files in React
+#### files in React
 
-## To start React Project with sass styling
+#### To start React Project with sass styling
 
 Install and clear the created directory from any files and code one doesn't need.
 For example:
@@ -95,9 +95,9 @@ Default structure for saas:
 - main.
 - css.
 
-## Deploy React apps in GH pages
+### Deploy React apps in GH pages
 
-# step 1
+#### step 1
 
 Installing gh-pages package
 
@@ -105,7 +105,7 @@ Installing gh-pages package
 $ npm install gh-pages
 ```
 
-# step 2
+#### step 2
 
 Adding homepage into **package.json**
 
@@ -114,7 +114,7 @@ Adding homepage into **package.json**
 
 ```
 
-# step 3
+#### step 3
 
 Adding some more scripts into **package.json**
 
@@ -126,7 +126,7 @@ Adding some more scripts into **package.json**
 }
 ```
 
-# step 4
+#### step 4
 
 Lastly run build script to generate build dir
 
@@ -135,7 +135,7 @@ $ npm rum build
 $ npm run deploy
 ```
 
-## To install fontawesome icons packages
+### To install fontawesome icons packages
 
 ```
  $ npm i --save @fortawesome/fontawesome-svg-core
@@ -145,13 +145,13 @@ $ npm run deploy
  $ npm install --save @fortawesome/free-regular-svg-icons
 ```
 
-## To install react icons package
+#### To install react icons package
 
 ```
 $ npm install react-icons --save
 ```
 
-### To use fontawesome icons via Individual Use
+#### To use fontawesome icons via Individual Use
 
 Import icons into each component.
 
@@ -162,37 +162,37 @@ Import icons into each component.
  $ ReactDOM.render(element, document.body)
 ```
 
-## Installing Router to handle links
+### Installing Router to handle links
 
 ```
  $ npm install react-router-dom
 ```
 
-## Axios to fetch
+### Axios to fetch
 
 ```
 npm i axios
 ```
 
-## Installing Bootstrap to handle predefined styles
+### Installing Bootstrap to handle predefined styles
 
 ```
  $ npm install react-bootstrap bootstrap@5.0.1
 ```
 
-## Scss style
+### Scss style
 
 ```
 $ npm install normalize-scss
 ```
 
-## To play with react emojis
+### To play with react emojis
 
 ```
 npm i emoji-picker-react
 ```
 
-Usage:
+#### Usage:
 
 ```js
 import React, { useState } from 'react';
@@ -218,7 +218,7 @@ const App = () => {
 };
 ```
 
-## Notes
+## Redux Project
 
 ### Functional programming
 is cutting a bigger problem into a bunch of smaller and reusable funtions which take an input and troe a result. The code written by this way is 
@@ -274,27 +274,27 @@ import {compose, pipe} from "lodash/fp";
 
 ```
 
-#### 
+#### Lodash
 
 Lodash - JS library to simplify the code which has a lot of funtions for functional programming
 
 ```
 npm i lodash
 ```
+
 Into index.js write
 FP stays for Functional Programming
 
 
- ```javascript
+```javascript
 import {compose, pipe} from "lodash/fp"
-
 ```
 
 ### 2.7. Currying
 Currying function named after Huskel Curry
 we remove unnecessary duplications like in the example where the function does almost the same, except it uses different element. Let's parametrise it.
 
- ```javascript
+```javascript
 /* const wrapInDiv = str =>  `<div>${str}</div>`;
 const wrapInSpan = str =>  `<span>${str}</span>`; */
 
@@ -302,6 +302,7 @@ const wrap = (type, str) =>  `<${type}>${str}</$type>`;
 ```
 
 Pipeline produces a string, and should give a function. This is because one of the functions in the pipeline has two parametres instead of one. We can obtain one parameter function from that one with two parametres by currying:
+
 ```javascript
 funtion add(a) {
   
