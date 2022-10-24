@@ -302,9 +302,12 @@ const wrap = (type, str) =>  `<${type}>${str}</$type>`;
 ```
 
 Pipeline produces a string, and should give a function. This is because one of the functions in the pipeline has two parametres instead of one. We can obtain one parameter function from that one with two parametres by currying:
+Currying is a function that allow us to grab 'N' argumets and create a function with a single argument.
 
 ```javascript
-funtion add(a) {
-  
+function add(a) {
+  return function(b) {
+    return a+b
+  }
 }
 ```
