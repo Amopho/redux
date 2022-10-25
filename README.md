@@ -285,6 +285,14 @@ npm i lodash
 Into index.js write
 FP stays for Functional Programming
 
+Lodash to simplify the functional programming, let's get rid of all those unnecessary paranthesis
+3 arguments for compose- an higher order function which takes another functions as arguments and returns a new function
+ ```javascript
+const transform = compose(wrapInDiv, toLowerCase, trim);
+```
+But still, it is not that preety piece of code as we need to read the functions order from rigth to left, to solve this problem we will use pipe and pass funtions in the order we are applying. pipe builds a pipeline the output of each function ends up of being an output of the next one.
+In our example case the second pipeline output is a lowercase string, the second parameter is empty, and that's why the console log says undefined, by giving the div as a type element to the wrap we get another error: "expected a function", it produces a string, but every argument given to the pipe has to be function. We need a funtion with a single parameter instead of two parametres - currying solves this problem. 
+After applying currying to wrap("div we get a funtion instead of a string"). Now we can pass this function into a pipe.
 
 ```javascript
 import {compose, pipe} from "lodash/fp"
@@ -297,11 +305,11 @@ we remove unnecessary duplications like in the example where the function does a
 ```javascript
 /* const wrapInDiv = str =>  `<div>${str}</div>`;
 const wrapInSpan = str =>  `<span>${str}</span>`; */
-
-const wrap = (type, str) =>  `<${type}>${str}</$type>`;
+// we rewrite a function with two parametres with help of Currying technique:
+const wrap = (type, str) =>  `<${type}>${str}</${type}>`;
 ```
 
-Pipeline produces a string, and should give a function. This is because one of the functions in the pipeline has two parametres instead of one. We can obtain one parameter function from that one with two parametres by currying:
+That function when used in a Pipeline would produce a string, and should give a function. This is because one of the functions in the pipeline has two parametres instead of one. We can obtain one parameter function from that one with two parametres by currying:
 Currying is a function that allow us to grab 'N' argumets and create a function with a single argument.
 
 ```javascript
@@ -311,3 +319,137 @@ function add(a) {
   }
 }
 ```
+Currying the two arguments function
+```javascript
+// const wrap = (type, str) =>  `<${type}>${str}</${type}>`;
+const wrap = type => str =>  `<${type}>${str}</${type}>`;
+```
+### 2.8 Pure function
+
+Renders the same results with given arguments, every single time the component re-renders.
+It can't contain:
+- random values,
+- date/ time
+- no global state (dom, db..)
+
+<strong>Error: lodash/fp - in order to solve the import problems the index.js should be renamed as index.mjs or package.json should have "type": module added </strong>
+
+### 3.1. Redux, the store
+
+In redux we store the application in a single js object called the store. It
+has to be accesible for every single element in the UI
+
+For the e-commerce shop, our store objrct will have properties like:
+
+```js
+{
+  products: [],
+  categories: [],
+  cart: {},
+  user: {}
+}
+```
+Remeber one is not able to mutate the state as the redux is built on top of functional programming rules. So in order to update the state in the store we should build a function that takes the store (immutable object) as an argument and updates it by returning updated store. Or to use the immutability libraries like immer or immutable.js
+
+```js
+//not possible
+store.currentUser = {name: "Name"}
+// just:
+function reducer(store)
+{
+const updated = {...store}
+}
+```
+How does the reducer (event handler) knows which instancweof the store to update? For that one we need an action (event)- js object that describes what just happened. iT is the second parameter of the reducer fucntion.
+
+App may have one or more reducers, each responsible for updating a specific slice of store.
+
+These reducers are pure functions, not changing the data.
+
+Take an action and dispatch it, and let the store to know about the action. Store has this dispatch method, and forwrds the action to the reducer. We are not calling the reducer, we work with the store who is responsible for calling the reducer. It computes the new state and returns it. The store injects the state, and notifies the UI components. They will pull the updated data and rerender. Dispatch is like a single entry point for every action
+
+### 3.2. APP Bug Tracker using Redux
+
+Steps for Redux Architecture
+1. Designing a store
+2. Define Actions
+3. Create a Reducer
+4. Store
+
+Install the Redux:
+```
+npm i redux@4.0
+```
+
+For a bug tracker application we would need to <strong>Maintain The List of Buggs</strong> the state:
+
+Array of bug objects:
+
+```js
+[
+  {
+    id: 1,
+    description: "",
+    resolved: false
+  },
+  {},
+  {},
+  {}
+]
+```
+
+In the real life however it would rather be looking like object with multiple properties containing arrays (list) of bugs, user...
+
+```js
+{
+ bugs: [
+  {
+    id: 1,
+    description: "",
+    resolved: false
+  },
+  {},
+  {},
+  {}
+  ],
+currentUser: {}
+}
+```
+### 3.5. Actions
+Remember Action is a simple JS Object that expalins eawhat just happened
+Mark a Bug as Resolved, Add a Bug, Delete a bug
+
+Redux would search for the type property in your action  object. So it is an obligatory property in your action object.
+
+```js
+// coommon convention for a descriptive type in Redux is a capitalizing, with underscore
+// description is a data linked with this type - like user describing the bug
+{
+ type: "ADD_BUG",
+ description: ""
+}
+// it is a good practice to add a payload to describe all the data of the action - a solution from facebooks flux architecture
+{
+ type: "bugAdded",
+ payload: {
+  description: ""
+  }
+}
+// minimum information on the data - all we need to identify a bufg is its ID
+{
+ type: "bugRemoved",
+ payload: {
+  id: 1
+  }
+}
+```
+
+It has to be a serializable (str, numbers but they are less descriptive), which means we need the state to be able to be stored on the disc. Than we may reload it later.
+
+### 3.6. Designing a reducer
+
+In a src folder add another file reducer.js
+
+In a reducer we are cerating logic that fits to our app
+
+The job of reducer is to return the new state with this action. We have an initial empty array of bugs, to which we will be adding. First copy all the bugs from the current state and add a new object with a bug, It would be nice to have a counter as well, set to 0 at the beginnig. Important thing is we need to make sure that payloag carries a minimum of descriptive information about the new object.
