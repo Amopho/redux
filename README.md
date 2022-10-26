@@ -360,7 +360,7 @@ function reducer(store)
 const updated = {...store}
 }
 ```
-How does the reducer (event handler) knows which instancweof the store to update? For that one we need an action (event)- js object that describes what just happened. iT is the second parameter of the reducer fucntion.
+How does the reducer (event handler) knows which instance eof the store to update? For that one we need an action (event)- js object that describes what just happened. it is the second parameter of the reducer fucntion.
 
 App may have one or more reducers, each responsible for updating a specific slice of store.
 
@@ -446,10 +446,16 @@ Redux would search for the type property in your action  object. So it is an obl
 
 It has to be a serializable (str, numbers but they are less descriptive), which means we need the state to be able to be stored on the disc. Than we may reload it later.
 
-### 3.6. Designing a reducer
+### 3.6. Creating a reducer
 
 In a src folder add another file reducer.js
 
 In a reducer we are cerating logic that fits to our app
+Reducers have to be pure functions- by giving the same arguments (state, action) it would return the same results
+The job of reducer is to return the new state with this action. We have an initial empty array of bugs, to which we will be adding. First copy all the bugs from the current state and add a new object with a bug, It would be nice to have a counter as well, set to 0 at the beginnig. Important thing is we need to make sure that payload carries a minimum of descriptive information about the new object. So we give a description, and the other properties should be computed.
 
-The job of reducer is to return the new state with this action. We have an initial empty array of bugs, to which we will be adding. First copy all the bugs from the current state and add a new object with a bug, It would be nice to have a counter as well, set to 0 at the beginnig. Important thing is we need to make sure that payloag carries a minimum of descriptive information about the new object.
+### 3.7. Creating the store
+
+store made from imported from redux createStore() from
+
+### 3.8 Dispatch an action
