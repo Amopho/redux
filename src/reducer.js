@@ -14,7 +14,7 @@ if (action.type === 'bugAdded')
         resolved: false
     }    
     ];
-    // return all the bugs beside that one which was removed
+    // TODO return all the bugs beside that one which was removed
     else if (action.type=== 'bugRemoved')
     return state.filter(bug=>bug.id !== action.payload.id)
 
